@@ -19,3 +19,4 @@ FetchContent_Declare(
 FetchContent_MakeAvailable(Catch2)
 
 add_subdirectory(acp-lib)
+add_subdirectory(tests)
