@@ -3,16 +3,15 @@
 #include <optional>
 #include <string_view>
 
-#include <acp/message/annotations.hpp>
+#include <acp/message/terminal_id.hpp>
 #include <acp/util/json_value.hpp>
 
 namespace culpeo::acp::message
 {
-    struct TextContent
+    struct Terminal
     {
-        static constexpr std::string_view type{ "text" };
-        std::optional<Annotations> annotations;
-        std::string text;
+        static constexpr std::string_view type{ "terminal" };
+        TerminalId terminal_id;
         std::optional<util::JsonValue::Object> metadata;
     };
 }

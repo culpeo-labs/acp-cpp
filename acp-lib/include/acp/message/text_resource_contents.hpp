@@ -1,18 +1,17 @@
 #pragma once
 
 #include <optional>
-#include <string_view>
+#include <string>
 
-#include <acp/message/annotations.hpp>
 #include <acp/util/json_value.hpp>
 
 namespace culpeo::acp::message
 {
-    struct TextContent
+    struct TextResourceContents
     {
-        static constexpr std::string_view type{ "text" };
-        std::optional<Annotations> annotations;
+        std::optional<std::string> mime_type;
         std::string text;
+        std::string uri;
         std::optional<util::JsonValue::Object> metadata;
     };
 }

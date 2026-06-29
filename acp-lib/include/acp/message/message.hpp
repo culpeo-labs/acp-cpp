@@ -1,73 +1,34 @@
-#include <optional>
-#include <string>
+#pragma once
+
 #include <variant>
-#include <stdint.h>
 
-#include <nlohmann/json.hpp>
-#include <vector>
+#include <acp/message/request_permission_request.hpp>
+#include <acp/message/read_text_file_request.hpp>
+#include <acp/message/write_text_file_request.hpp>
+#include <acp/message/create_terminal_request.hpp>
+#include <acp/message/terminal_output_request.hpp>
+#include <acp/message/release_terminal_request.hpp>
+#include <acp/message/wait_for_terminal_exit_request.hpp>
+#include <acp/message/kill_terminal_request.hpp>
 
-namespace culpeo::acp::messages {
+namespace culpeo::acp::messages
+{
+    using AgentRequest = std::variant<
+        message::WriteTextFileRequest,
+        message::ReadTextFileRequest,
+        message::RequestPermissionRequest,
+        message::CreateTerminalRequest,
+        message::TerminalOutputRequest,
+        message::ReleaseTerminalRequest,
+        message::WaitForTerminalExitRequest,
+        message::KillTerminalRequest
+    >;
 
-    using Message = std::string;
+    using AgentResponse = std::variant<>;
 
-
-    // using RequestId = std::variant<std::string, uint64_t, std::nullptr_t>;
-    // using SessionId = std::string;
-    // using ToolCallId = std::string;
-    // enum class ToolKind
-    // {
-    //     read,
-    //     edit,
-    //     delete_,
-    //     move,
-    //     search,
-    //     execute,
-    //     think,
-    //     fetch,
-    //     switch_mode,
-    //     other,
-    // };
-
-    // enum class ToolCallStatus
-    // {
-    //     pending,
-    //     in_progress,
-    //     completed,
-    //     failed,
-    // };
-
-    // struct WriteTextFileRequest
-    // {
-    //     SessionId session_id;
-    //     std::string path;
-    //     std::string content;
-    //     std::optional<nlohmann::json> metadata;
-    // };
-
-    // struct ReadTextFileRequest
-    // {
-    //     SessionId session_id;
-
-    // }
-
-    // struct ToolCallUpdate
-    // {
-    //     ToolCallId tool_call_id;
-    //     std::optional<ToolKind> kind;
-    //     std::optional<ToolCallStatus> status;
-    //     std::optional<std::string> title;
-
-    // }
-
-    // struct Content
-    // {
-    //     ContentBlock content;
-    //     std::optional<nlohmann::json> metadata;
-    // };
-
-
-
-
-
+    using Message = std::variant<
+        AgentRequest,
+        AgentResponse
+    >;
 
 }

@@ -1,18 +1,19 @@
 #pragma once
 
 #include <optional>
+#include <string>
 #include <string_view>
 
-#include <acp/message/annotations.hpp>
 #include <acp/util/json_value.hpp>
 
 namespace culpeo::acp::message
 {
-    struct TextContent
+    struct Diff
     {
-        static constexpr std::string_view type{ "text" };
-        std::optional<Annotations> annotations;
-        std::string text;
+        static constexpr std::string_view type{ "diff" };
+        std::string path;
+        std::optional<std::string> old_text;
+        std::string new_text;
         std::optional<util::JsonValue::Object> metadata;
     };
 }

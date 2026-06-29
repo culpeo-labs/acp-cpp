@@ -1,20 +1,16 @@
-#pragma once
-
 #include <optional>
-#include <string>
 
 #include <acp/message/annotations.hpp>
+#include <acp/message/embedded_resource_resouce.hpp>
 #include <acp/util/json_value.hpp>
 
 namespace culpeo::acp::message
 {
-    struct ImageContent
+    struct EmbeddedResource
     {
-        static constexpr std::string_view type{ "image" };
+        static constexpr std::string_view type{ "resource" };
         std::optional<Annotations> annotations;
-        std::string data;
-        std::string mime_type;
-        std::optional<std::string> uri;
+        EmbeddedResourceResource resource;
         std::optional<util::JsonValue::Object> metadata;
     };
 }
